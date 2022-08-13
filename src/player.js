@@ -1,10 +1,6 @@
 const Player = (GameBoard) => {
   const enemyBoard = GameBoard;
 
-  function randomCoord() {
-    return Math.floor(Math.random() * 10);
-  }
-
   function legalMove(row, col) {
     if (row < 0 || 9 < row) {
       return false;

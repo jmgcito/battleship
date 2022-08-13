@@ -51,5 +51,3 @@ test("computer players make legal moves", () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 });
-
-test.todo("makes sure non-computer player's turn is legal");
