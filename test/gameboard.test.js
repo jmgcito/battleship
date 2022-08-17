@@ -97,25 +97,25 @@ test("autoPlace places all ships randomly without any overlapping", () => {
 
   // autoplace has 3 random numbers per iteration: row, col, horizontal(even) or vertical(odd)
   let randomArr = [
-    3, 4, 0, 2, 7, 1, 6, 2, 0, 1, 8, 0, 7, 4, 1, 9, 0, 1, 6, 0, 0, 1, 1, 1, 0,
-    4, 0,
+    1, 6, 1, 0, 9, 1, 4, 7, 0, 8, 1, 0, 0, 2, 6, 1, 7, 2, 0, 4, 3,
   ];
   const mockRandomCoord = jest.fn(() => {
     return randomArr.pop();
   });
 
   testBoard.autoPlace(mockRandomCoord);
+
   expect(testBoard.boardMap).toEqual([
-    [0, 0, 0, 0, 5, 5, 0, 0, 0, 0],
-    [0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 4, 0, 0, 1, 1, 1, 1, 1, 0],
+    [0, 3, 3, 3, 0, 0, 0, 4, 4, 4],
+    [0, 0, 0, 0, 0, 0, 5, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 5, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 2, 2, 2, 2, 0, 0, 0, 0],
-    [0, 0, 0, 0, 3, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 3, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 3, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
   expect;
 });
