@@ -1,4 +1,3 @@
-const { randomCoord } = require("./randomCoord");
 const { Ship } = require("./ship");
 
 const GameBoard = () => {
@@ -42,19 +41,21 @@ const GameBoard = () => {
     let shipID = boardMap[row][col];
 
     // if hit
-    if (shipID > 0) {
-      let ship = ships[shipID - 1];
-      ship.hit(row, col);
+    if (!isNaN(shipID)) {
+      if (shipID > 0) {
+        let ship = ships[shipID - 1];
+        ship.hit(row, col);
 
-      // adds to sunken ships if ship returns true
-      if (ship.isSunk()) {
-        sunkenShips++;
+        // adds to sunken ships if ship returns true
+        if (ship.isSunk()) {
+          sunkenShips++;
+        }
+        boardMap[row][col] = "h";
+        return true;
+      } else {
+        boardMap[row][col] = "m";
+        return false;
       }
-      boardMap[row][col] = "h";
-      return true;
-    } else {
-      boardMap[row][col] = "m";
-      return false;
     }
   };
 
@@ -70,7 +71,7 @@ const GameBoard = () => {
   function legalPlacement(row, col, orient, length) {
     for (let i = 0; i < length; i++) {
       // out of range
-      if (boardMap[row][col] == null) {
+      if (row > 9 || col > 9) {
         return false;
       } //prevent overlap
       else if (boardMap[row][col] > 0) {
@@ -105,7 +106,14 @@ const GameBoard = () => {
     }
   };
 
-  return { boardMap, placeShip, receiveAttack, allSunk, autoPlace };
+  return {
+    boardMap,
+    placeShip,
+    receiveAttack,
+    allSunk,
+    autoPlace,
+    legalPlacement,
+  };
 };
 
 module.exports = { GameBoard };

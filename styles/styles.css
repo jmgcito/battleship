@@ -1,0 +1,14 @@
+#grids-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#grids-container div {
+  border: 1px solid black;
+}
+
+#grids-container > div {
+  display: grid;
+  grid-template-rows: repeat(10, 30px);
+  grid-template-columns: repeat(10, 30px);
+}

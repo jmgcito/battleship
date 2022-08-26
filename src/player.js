@@ -29,7 +29,7 @@ const Player = (GameBoard) => {
     attack(row, col);
   };
 
-  return { attack, autoPlay };
+  return { attack, autoPlay, legalMove };
 };
 
 module.exports = { Player };
